@@ -1,0 +1,103 @@
+<DATAFILE>
+
+[FILEINFO]
+file='master_data_RNA_DNA_p27_kE0.csv'
+delimiter = comma
+header = {animal, time, group, Y, data_category, limit, censoring, inoculum, data_category_names}
+
+[CONTENT]
+animal = {use=identifier}
+time = {use=time}
+group = {use=covariate, type=categorical}
+Y = {use=observation, name={y1, y2, y3, y4}, yname={'1', '2', '3', '4'}, type={continuous, continuous, continuous, continuous}}
+data_category = {use=observationtype}
+limit = {use=limit}
+censoring = {use=censored}
+inoculum = {use=regressor}
+
+<MODEL>
+
+[COVARIATE]
+input = group
+
+group = {type=categorical, categories={'H6 50AID50', 'Non H6 50AID50', 'Non H6 5AID50'}}
+
+[INDIVIDUAL]
+input = {T0_exp_pop, V0_exp_pop, alphaE_pop, beta_prime_exp_pop, dD_pop, dE_pop, dI_pop, lambda_pop, omega_lambda, omega_exp_pop, omega_omega_exp, r_pop, omega_r, thetaE_pop, omega_alphaE, fD_pop, lambdaEstr_exp_pop, omega_lambdaEstr_exp, omega_dD, omega_fD}
+
+DEFINITION:
+T0_exp = {distribution=logNormal, typical=T0_exp_pop, no-variability}
+V0_exp = {distribution=normal, typical=V0_exp_pop, no-variability}
+alphaE = {distribution=logNormal, typical=alphaE_pop, sd=omega_alphaE}
+beta_prime_exp = {distribution=normal, typical=beta_prime_exp_pop, no-variability}
+dD = {distribution=logNormal, typical=dD_pop, sd=omega_dD}
+dE = {distribution=logNormal, typical=dE_pop, no-variability}
+dI = {distribution=logNormal, typical=dI_pop, no-variability}
+lambda = {distribution=logNormal, typical=lambda_pop, sd=omega_lambda}
+omega_exp = {distribution=normal, typical=omega_exp_pop, sd=omega_omega_exp}
+r = {distribution=logNormal, typical=r_pop, sd=omega_r}
+thetaE = {distribution=logNormal, typical=thetaE_pop, no-variability}
+fD = {distribution=logitNormal, typical=fD_pop, sd=omega_fD}
+lambdaEstr_exp = {distribution=normal, typical=lambdaEstr_exp_pop, sd=omega_lambdaEstr_exp}
+
+[LONGITUDINAL]
+input = {a1, a2, a3, b3}
+
+file = 'modelFile_model_1.txt'
+
+DEFINITION:
+y1 = {distribution=normal, prediction=y_RNA, errorModel=constant(a1)}
+y2 = {distribution=normal, prediction=y_DNA, errorModel=constant(a2)}
+y3 = {distribution=normal, prediction=y_F, errorModel=combined1(a3, b3)}
+
+<FIT>
+data = {y1, y2, y4}
+model = {y1, y2, y3}
+
+<PARAMETER>
+T0_exp_pop = {value=4.716445851255438, method=MLE}
+V0_exp_pop = {value=-2.76, method=FIXED}
+a1 = {value=0.5311503110389216, method=MLE}
+a2 = {value=0.6851301612933904, method=MLE}
+a3 = {value=0.1108526369880308, method=MLE}
+alphaE_pop = {value=0.65241313693907, method=MLE}
+b3 = {value=0.7117927307185605, method=MLE}
+beta_prime_exp_pop = {value=-3.286147322909993, method=MLE}
+c3 = {value=1, method=FIXED}
+dD_pop = {value=0.188317784137082, method=MLE}
+dE_pop = {value=1, method=FIXED}
+dI_pop = {value=0.1, method=FIXED}
+fD_pop = {value=0.9356280391463008, method=MLE}
+lambdaEstr_exp_pop = {value=0.0396253057023125, method=MLE}
+lambda_pop = {value=1121.347510863871, method=MLE}
+omega_alphaE = {value=0.1897438927341977, method=MLE}
+omega_dD = {value=0.5134930905664493, method=MLE}
+omega_exp_pop = {value=-2.462045014928755, method=MLE}
+omega_fD = {value=0.0602331380436102, method=MLE}
+omega_lambda = {value=1.207662258678182, method=MLE}
+omega_lambdaEstr_exp = {value=0.2154231746235388, method=MLE}
+omega_omega_exp = {value=0.4186894698389055, method=MLE}
+omega_r = {value=0.7307243370003484, method=MLE}
+r_pop = {value=139.9530278783149, method=MLE}
+thetaE_pop = {value=0.1, method=FIXED}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(method = ImportanceSampling)
+plotResult(method = {indfits, parameterdistribution, covariancemodeldiagnosis, covariatemodeldiagnosis, obspred, vpc, residualsscatter, residualsdistribution, randomeffects, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = 'masterfile_model_1'
+
+POPULATION:
+exploratoryiterations = 2000
+simulatedannealingiterations = 2000
+
+FIM:
+maxiterations = 5000
+

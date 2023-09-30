@@ -1,0 +1,53 @@
+DESCRIPTION: Model #1 from our model building strategy for NHP controllers with RNA, DNA, and F data as observations.
+
+INPUT:
+
+[LONGITUDINAL]
+input = {lambda, beta_prime_exp, fD, lambdaEstr_exp, dI, dD, r, alphaE, thetaE, dE, omega_exp, inoculum, T0_exp, V0_exp}
+
+inoculum = {use = regressor}
+
+EQUATION:
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SPECIFIC SETTINGS AND INITIAL CONDITIONS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; odeType = stiff
+
+; t0 is a reserved key-word (initiation of therapy)
+
+t0   = 0
+
+T_0     = (10^(T0_exp))
+I_0     = (10^(V0_exp))*(inoculum/5)*(1/r)
+D_0     = 0
+Estr_0  = 0
+
+beta_prime  = 10^(beta_prime_exp)
+dT          = lambda/10^(T0_exp)
+omega       = 10^(omega_exp)
+C0          = 10^6
+C0_hat      = 10^6
+lambdaEstr  = 10^(lambdaEstr_exp)
+
+;;;;;;;;;;;;;;;;
+; SYSTEM OF ODES
+;;;;;;;;;;;;;;;;
+
+ddt_T    = lambda - beta_prime*T*I - dT*T
+ddt_I    = (1 - fD)*beta_prime*T*I - (1 - exp(-omega*t))*Estr*I  - dI*I
+ddt_D    = fD*beta_prime*T*I - dD*D
+ddt_Estr = lambdaEstr + alphaE*Estr*I/(thetaE + I) - dE*Estr
+; ddt_k = omega*(kf - k)
+
+;;;;;;;;;;;;;;;;;;
+; OUTPUT VARIABLES
+;;;;;;;;;;;;;;;;;;
+
+y_RNA = log10(max((r*I*2), 0.000001))
+y_DNA = log10(max((I + D), 0.000001))
+y_F   = (1 - exp(-omega*t))*Estr*(C0/C0_hat)
+
+OUTPUT:
+output = {y_RNA, y_DNA, y_F}

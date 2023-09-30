@@ -1,0 +1,8 @@
+parameter,statistics,p-value,test
+lambda,0.961099,0.998882,Shapiro-Wilk
+fD,0.944683,0.362234,Shapiro-Wilk
+lambdaEstr_exp,0.943382,0.10326,Shapiro-Wilk
+dD,0.954915,0.795391,Shapiro-Wilk
+r,0.931485,0.218936,Shapiro-Wilk
+alphaE,0.961117,0.971789,Shapiro-Wilk
+omega_exp,0.934917,0.427478,Shapiro-Wilk

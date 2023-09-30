@@ -1,0 +1,8 @@
+eta,covariate,statistics,p-value,test
+eta_lambda,group,1.40287,0.28076,Anova
+eta_fD,group,0.0802242,0.923363,Anova
+eta_lambdaEstr_exp,group,10.1727,0.00219231,Anova
+eta_dD,group,1.27887,0.311156,Anova
+eta_r,group,2.49105,0.121386,Anova
+eta_alphaE,group,0.231624,0.796448,Anova
+eta_omega_exp,group,0.814384,0.464282,Anova
