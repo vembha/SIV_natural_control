@@ -2,7 +2,7 @@
 # Antiviral capacity of the early CD8 T-cell response is predictive of natural control of SIV infection
 ### URL:
 
-#### Languages used: Julia 1.7.3; MATLAB® 2023a Update 2
+#### Numerical packages and languages used: Julia 1.7.3; Monolix 2021R1
 <br/>
 <br/>
 
