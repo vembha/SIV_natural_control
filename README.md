@@ -5,6 +5,7 @@
 #### Numerical packages used: Julia 1.7.3; MATLAB® 2023a Update 2
 <br/>
 <br/>
+
 This repository contains three folders named `figure_codes`, `figure_data_files`, and `monolix_files` which can be used to generate the figures in the manuscript. The `julia_packages.txt` file lists all the packages used in Julia 1.7.3 to perform the calculations. A description of the files in the individual folders is given below:
 
 #### 1. `monolix_files`
