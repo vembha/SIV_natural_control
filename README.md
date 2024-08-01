@@ -1,6 +1,6 @@
 # **Code repository for the publication:**
 # Antiviral capacity of the early CD8 T-cell response is predictive of natural control of SIV infection: Learning _in vivo_ dynamics using _ex vivo_ data
-### URL:
+### URL: [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.10.13.562306v1)
 
 #### Numerical packages and languages used: Julia 1.7.3; Monolix 2021R1
 <br/>
