@@ -1,5 +1,5 @@
 # **Code repository for the publication:**
-# Antiviral capacity of the early CD8 T-cell response is predictive of natural control of SIV infection
+# Antiviral capacity of the early CD8 T-cell response is predictive of natural control of SIV infection: Learning _in vivo_ dynamics using _ex vivo_ data
 ### URL:
 
 #### Numerical packages and languages used: Julia 1.7.3; Monolix 2021R1
@@ -16,3 +16,6 @@ This folder contains all the `.xlsx` and `.csv` files required to plot the figur
 
 #### 3. `figure_codes`
 This folder contains the Julia files that can be run to reproduce the figures; names are self-explanatory.
+
+#### 4. `julia_packages
+This text file provides the versions of the Julia packages used for this project.
