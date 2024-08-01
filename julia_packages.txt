@@ -1,0 +1,28 @@
+#=
+PACKAGES USED IN THIS PROJECT
+=#
+
+[336ed68f] CSV v0.10.4
+[13f3f980] CairoMakie v0.8.13
+[35d6a980] ColorSchemes v3.20.0
+[5ae59095] Colors v0.12.10   
+[a93c6f00] DataFrames v1.3.4
+[41bf760c] DiffEqSensitivity v6.79.0
+[0c46a032] DifferentialEquations v7.2.0
+[e248de7e] EffectSizes v1.0.0
+[31c24e10] Distributions v0.25.68
+[28b8d3ca] GR v0.66.2
+[af5da776] GlobalSensitivity v2.1.2
+[09f84164] HypothesisTests v0.10.10
+[f7bf1975] Impute v0.6.8
+[2fda8390] LsqFit v0.12.1
+[ee78f7c6] Makie v0.17.13
+[2edaba10] Nemo v0.32.5
+[91a5bcdd] Plots v1.31.7
+[f2b01f46] Roots v2.0.2
+[f3b207a7] StatsPlots v0.15.1
+[220ca800] StructuralIdentifiability v0.4.1
+[592b5752] Trapz v2.0.3
+[fdbf4ff8] XLSX v0.8.2
+[37e2e46d] LinearAlgebra
+[10745b16] Statistics
