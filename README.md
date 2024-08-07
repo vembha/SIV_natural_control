@@ -17,5 +17,5 @@ This folder contains all the `.xlsx` and `.csv` files required to plot the figur
 #### 3. `figure_codes`
 This folder contains the Julia files that can be run to reproduce the figures; names are self-explanatory.
 
-#### 4. `julia_packages
+#### 4. `julia_packages`
 This text file provides the versions of the Julia packages used for this project.
